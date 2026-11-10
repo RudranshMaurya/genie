@@ -204,7 +204,7 @@ export function AppContent() {
   }
 
   return (
-    <div className="min-h-screen bg-[#040612] text-[#f4ecd8] relative overflow-hidden select-none">
+    <div className="fixed inset-0 h-[100dvh] w-full bg-[#040612] text-[#f4ecd8] overflow-hidden select-none flex flex-col">
       {/* Deep celestial starlight canvas */}
       <ParticleBackground intensity="cinematic" interactive />
 
@@ -266,7 +266,7 @@ export function AppContent() {
       </button>
 
       {/* MAIN MAGICAL STAGE */}
-      <main className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full px-5 py-8">
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-center w-full max-w-md mx-auto px-4 py-2 sm:py-6 overflow-y-auto no-scrollbar">
         {/* Subtle Ambient Moonbeam God-Ray Halo behind center */}
         <div
           className="absolute w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none opacity-40 animate-corona"
@@ -395,10 +395,17 @@ export function AppContent() {
                   type="text"
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
+                  onFocus={() => {
+                    // Prevent mobile browsers from panning or scrolling the viewport
+                    setTimeout(() => {
+                      window.scrollTo(0, 0);
+                      document.body.scrollTop = 0;
+                    }, 50);
+                  }}
                   placeholder="Tell me a wish or talk to me, Ananya…"
                   disabled={isAiThinking}
                   maxLength={300}
-                  className="flex-1 bg-transparent text-sm sm:text-base text-[#f4ecd8] placeholder-[#f4ecd8]/40 focus:outline-none font-storybook min-w-0"
+                  className="flex-1 bg-transparent text-[16px] text-[#f4ecd8] placeholder-[#f4ecd8]/40 focus:outline-none font-storybook min-w-0"
                 />
 
                 {/* Enchanted Make a Wish Button */}
