@@ -34,8 +34,12 @@ export const GenieCharacter: React.FC<GenieCharacterProps> = ({
   return (
     <div
       onClick={onClick}
-      className={`relative inline-flex flex-col items-center select-none cursor-pointer transition-transform duration-300 ${animationClass} ${className}`}
-      style={{ transform: scale !== 1 ? `scale(${scale})` : undefined }}
+      className={`relative inline-flex flex-col items-center select-none cursor-pointer will-change-transform ${animationClass} ${className}`}
+      style={{
+        transform: scale !== 1 ? `scale(${scale})` : undefined,
+        backfaceVisibility: 'hidden',
+        WebkitBackfaceVisibility: 'hidden',
+      }}
     >
       {/* Soft ethereal magical mist aura around character */}
       {showAura && (

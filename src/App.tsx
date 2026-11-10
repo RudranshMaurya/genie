@@ -87,12 +87,12 @@ export function AppContent() {
         "✨ Well, well... look who has awakened me! Hello, Ananya. I am your personal Genie, bound to your heart. Tell me a wish, a dream, or what's on your mind today!"
       );
 
-      // Once emergence completes (1.5s), settle into floating breathing animation
+      // Once emergence completes (1.25s), settle into floating breathing animation
       setTimeout(() => {
         setIsEmerging(false);
         inputRef.current?.focus();
-      }, 1500);
-    }, 450);
+      }, 1250);
+    }, 400);
   };
 
   // Playful roll interaction if Ananya clicks the Genie directly
@@ -107,7 +107,7 @@ export function AppContent() {
       "At your command, my lady! Your wishes are my greatest delight ✨",
     ];
     setGenieSpeech(quips[Math.floor(Math.random() * quips.length)]);
-    setTimeout(() => setIsRolling(false), 1400);
+    setTimeout(() => setIsRolling(false), 1150);
   };
 
   // SEND MESSAGE / WISH TO THE GENIE (AI CONVERSATION)
@@ -122,7 +122,7 @@ export function AppContent() {
 
     // Trigger smooth rolling somersault animation upon clicking make a wish button!
     setIsRolling(true);
-    setTimeout(() => setIsRolling(false), 1400);
+    setTimeout(() => setIsRolling(false), 1150);
 
     // Add user turn to conversation history
     const updatedHistory: ConversationTurn[] = [
