@@ -19,6 +19,8 @@ export function AppContent() {
   // Whether the genie has been awakened by rubbing/clicking the lamp
   const [isGenieOut, setIsGenieOut] = useState<boolean>(false);
   const [isAwakening, setIsAwakening] = useState<boolean>(false);
+  const [isEmerging, setIsEmerging] = useState<boolean>(false);
+  const [isRolling, setIsRolling] = useState<boolean>(false);
 
   // Chat & input states
   const [inputText, setInputText] = useState('');
@@ -68,26 +70,44 @@ export function AppContent() {
     // Stardust golden burst
     try {
       confetti({
-        particleCount: 70,
-        spread: 90,
+        particleCount: 85,
+        spread: 100,
         origin: { y: 0.65 },
         colors: ['#ffe07a', '#f5c443', '#d4af37', '#93c5fd', '#ffffff'],
       });
     } catch {}
 
+    // Genie emerges out of the lamp with spiral emergence animation
     setTimeout(() => {
       setIsGenieOut(true);
+      setIsEmerging(true);
       setIsAwakening(false);
       setGenieExpression('speaking');
       setGenieSpeech(
         "✨ Well, well... look who has awakened me! Hello, Ananya. I am your personal Genie, bound to your heart. Tell me a wish, a dream, or what's on your mind today!"
       );
 
-      // Focus input field once Genie emerges
+      // Once emergence completes (1.5s), settle into floating breathing animation
       setTimeout(() => {
+        setIsEmerging(false);
         inputRef.current?.focus();
-      }, 500);
-    }, 900);
+      }, 1500);
+    }, 450);
+  };
+
+  // Playful roll interaction if Ananya clicks the Genie directly
+  const handleGenieClick = () => {
+    if (isRolling || isEmerging) return;
+    setIsRolling(true);
+    setGenieExpression('happy');
+    const quips = [
+      "Haha! You tickled your Genie! What shall we wish for next, Ananya? ✨",
+      "Wheee! Floating in the stars is so much better with you here! 💖",
+      "Spinning starlight just for you, Ananya! Tell me another dream!",
+      "At your command, my lady! Your wishes are my greatest delight ✨",
+    ];
+    setGenieSpeech(quips[Math.floor(Math.random() * quips.length)]);
+    setTimeout(() => setIsRolling(false), 1400);
   };
 
   // SEND MESSAGE / WISH TO THE GENIE (AI CONVERSATION)
@@ -99,6 +119,10 @@ export function AppContent() {
     setInputText('');
     setIsAiThinking(true);
     setGenieExpression('listening');
+
+    // Trigger smooth rolling somersault animation upon clicking make a wish button!
+    setIsRolling(true);
+    setTimeout(() => setIsRolling(false), 1400);
 
     // Add user turn to conversation history
     const updatedHistory: ConversationTurn[] = [
@@ -284,29 +308,11 @@ export function AppContent() {
               />
             </div>
 
-            {/* Pulsing Guidance Talisman */}
-            <div className="mt-6 flex flex-col items-center">
-              <button
-                onClick={handleAwakenGenie}
-                className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full overflow-hidden select-none transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_8px_30px_rgba(245,196,67,0.45)] hover:shadow-[0_12px_40px_rgba(245,196,67,0.7)] border border-[#fff9d2]/60"
-                style={{
-                  background:
-                    'linear-gradient(135deg, #fff3b0 0%, #fcd34d 30%, #f59e0b 70%, #b45309 100%)',
-                }}
-              >
-                {/* Shimmer beam */}
-                <div className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none animate-shimmer" />
-
-                <span className="text-[#3a1503] font-bold text-base">✨</span>
-                <span className="font-fairytale text-xs sm:text-sm tracking-[0.2em] font-extrabold text-[#3a1503]">
-                  RUB OR TAP THE LAMP
-                </span>
-                <span className="text-[#3a1503] font-bold text-base">✦</span>
-              </button>
-
-              <span className="font-storybook italic text-xs text-[#d4af37]/70 mt-3 tracking-wide">
-                Swipe your finger across or tap the lamp to summon your Genie
-              </span>
+            {/* Ethereal guidance hint without any clunky button */}
+            <div className="mt-5 flex items-center justify-center gap-2 text-xs sm:text-sm font-storybook italic text-[#d4af37]/80 tracking-wide select-none animate-pulse">
+              <span className="text-[#ffe07a]">✦</span>
+              <span>Rub or tap the golden lamp to awaken your Genie</span>
+              <span className="text-[#ffe07a]">✦</span>
             </div>
           </div>
         )}
@@ -314,13 +320,16 @@ export function AppContent() {
         {/* SCENE 2: THE GENIE IS OUT — CONVERSE IN REAL-TIME & MAKE WISHES */}
         {isGenieOut && (
           <div className="flex flex-col items-center w-full max-w-sm relative z-10 animate-in fade-in duration-700">
-            {/* Living Genie Character */}
+            {/* Living Genie Character with smooth rolling & emergence animations */}
             <div className="mb-1">
               <GenieCharacter
                 expression={genieExpression}
                 scale={1}
                 isFloating={true}
+                isRolling={isRolling}
+                isEmerging={isEmerging}
                 showAura={true}
+                onClick={handleGenieClick}
               />
             </div>
 
@@ -358,12 +367,9 @@ export function AppContent() {
             <LampIllustration
               size="sm"
               isGlowing={true}
-              smokeActive={isAiThinking || Boolean(justCapturedWish)}
+              smokeActive={isAiThinking || Boolean(justCapturedWish) || isEmerging}
               onClick={() => {
-                setGenieSpeech(
-                  "You touched the lamp! I'm here right beside you, Ananya. Tell me what's on your heart."
-                );
-                setGenieExpression('happy');
+                handleGenieClick();
               }}
             />
 
@@ -395,12 +401,13 @@ export function AppContent() {
                   className="flex-1 bg-transparent text-sm sm:text-base text-[#f4ecd8] placeholder-[#f4ecd8]/40 focus:outline-none font-storybook min-w-0"
                 />
 
-                {/* Enchanted Send Button */}
+                {/* Enchanted Make a Wish Button */}
                 <button
                   type="submit"
                   disabled={!inputText.trim() || isAiThinking}
-                  aria-label="Send wish or message"
-                  className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 disabled:opacity-30 hover:scale-110 active:scale-95 group overflow-hidden relative cursor-pointer"
+                  aria-label="Make a Wish"
+                  title="Make a Wish ✨"
+                  className="shrink-0 h-10 px-4 rounded-full flex items-center justify-center gap-1.5 transition-all duration-300 disabled:opacity-30 hover:scale-105 active:scale-95 group overflow-hidden relative cursor-pointer"
                   style={{
                     background: inputText.trim()
                       ? 'linear-gradient(135deg, #fff3b0 0%, #fcd34d 30%, #f59e0b 70%, #d97706 100%)'
@@ -415,10 +422,18 @@ export function AppContent() {
                     <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none animate-shimmer" />
                   )}
 
+                  <span
+                    className={`font-fairytale text-xs font-bold tracking-wider relative z-10 transition-colors ${
+                      inputText.trim() ? 'text-[#290e02]' : 'text-[#d4af37]'
+                    }`}
+                  >
+                    Wish
+                  </span>
+
                   {/* Compass / Star Send Icon */}
                   <svg
-                    width="15"
-                    height="15"
+                    width="14"
+                    height="14"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"

@@ -4,25 +4,38 @@ interface GenieCharacterProps {
   expression?: 'happy' | 'listening' | 'speaking' | 'granting' | 'surprised';
   speakingText?: string;
   isFloating?: boolean;
+  isRolling?: boolean;
+  isEmerging?: boolean;
   scale?: number;
   className?: string;
   showAura?: boolean;
+  onClick?: () => void;
 }
 
 export const GenieCharacter: React.FC<GenieCharacterProps> = ({
   expression = 'happy',
   speakingText,
   isFloating = true,
+  isRolling = false,
+  isEmerging = false,
   scale = 1,
   className = '',
   showAura = true,
+  onClick,
 }) => {
+  const animationClass = isEmerging
+    ? 'animate-genie-emerge'
+    : isRolling
+    ? 'animate-genie-roll'
+    : isFloating
+    ? 'animate-float'
+    : '';
+
   return (
     <div
-      className={`relative inline-flex flex-col items-center select-none ${
-        isFloating ? 'animate-float' : ''
-      } ${className}`}
-      style={{ transform: `scale(${scale})` }}
+      onClick={onClick}
+      className={`relative inline-flex flex-col items-center select-none cursor-pointer transition-transform duration-300 ${animationClass} ${className}`}
+      style={{ transform: scale !== 1 ? `scale(${scale})` : undefined }}
     >
       {/* Soft ethereal magical mist aura around character */}
       {showAura && (
