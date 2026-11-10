@@ -38,20 +38,37 @@
   }
 }
 
-/* Custom enchanted antique gold scrollbars */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+/* Hide all global scrollbars across mobile and web view */
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
-::-webkit-scrollbar-track {
-  background: rgba(4, 7, 20, 0.95);
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #966a12, #f5c443, #966a12);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #ffe57f;
+
+/* Elegant scrollbar exclusively for Wish Vault list on desktop */
+@media (min-width: 768px) {
+  .vault-scroll {
+    scrollbar-width: thin !important;
+  }
+  .vault-scroll::-webkit-scrollbar {
+    display: block !important;
+    width: 5px !important;
+    height: 5px !important;
+  }
+  .vault-scroll::-webkit-scrollbar-track {
+    background: rgba(4, 7, 20, 0.95);
+  }
+  .vault-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #966a12, #f5c443, #966a12);
+    border-radius: 4px;
+  }
+  .vault-scroll::-webkit-scrollbar-thumb:hover {
+    background: #ffe57f;
+  }
 }
 
 /* Floating animation */

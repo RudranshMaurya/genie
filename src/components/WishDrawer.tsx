@@ -206,7 +206,7 @@ export const WishDrawer: React.FC<WishDrawerProps> = ({
         </div>
 
         {/* Scrollable Content Area */}
-        <div className="flex-1 overflow-y-auto px-5 py-5 space-y-4">
+        <div className="flex-1 overflow-y-auto px-4 py-4 sm:px-5 sm:py-5 space-y-3.5 sm:space-y-4 vault-scroll">
           {displayedWishes.length === 0 ? (
             /* ENCHANTED STORYBOOK EMPTY STATE */
             <div className="text-center py-16 px-6 flex flex-col items-center justify-center">

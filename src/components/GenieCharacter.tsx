@@ -44,7 +44,7 @@ export const GenieCharacter: React.FC<GenieCharacterProps> = ({
       {/* Soft ethereal magical mist aura around character */}
       {showAura && (
         <div
-          className="absolute -inset-10 rounded-full blur-3xl pointer-events-none opacity-70 animate-corona"
+          className="absolute -inset-4 sm:-inset-8 rounded-full blur-2xl pointer-events-none opacity-70 animate-corona"
           style={{
             background:
               'radial-gradient(circle, rgba(147, 197, 253, 0.4) 0%, rgba(212, 175, 55, 0.3) 45%, transparent 75%)',
@@ -66,7 +66,7 @@ export const GenieCharacter: React.FC<GenieCharacterProps> = ({
       {/* Character Illustration SVG */}
       <svg
         viewBox="0 0 280 340"
-        className="w-56 h-68 sm:w-64 sm:h-80 drop-shadow-[0_12px_24px_rgba(0,0,0,0.7)] z-20"
+        className="w-36 h-44 sm:w-52 sm:h-64 md:w-60 md:h-72 drop-shadow-[0_8px_20px_rgba(0,0,0,0.6)] z-20"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >

@@ -211,7 +211,7 @@ export function AppContent() {
       {/* FLOATING WISH VAULT CART TALISMAN — Top Right */}
       <button
         onClick={() => setDrawerOpen(true)}
-        className="fixed top-5 right-5 z-30 group flex items-center gap-2.5 px-4.5 py-2.5 rounded-full backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 border border-[#d4af37]/40 hover:border-[#ffd700] shadow-[0_6px_25px_rgba(0,0,0,0.5),0_0_20px_rgba(245,196,67,0.15)]"
+        className="fixed top-3 right-3 sm:top-5 sm:right-5 z-30 group flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2.5 rounded-full backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 border border-[#d4af37]/40 hover:border-[#ffd700] shadow-[0_6px_25px_rgba(0,0,0,0.5),0_0_20px_rgba(245,196,67,0.15)]"
         style={{
           background:
             'linear-gradient(135deg, rgba(16, 23, 56, 0.92) 0%, rgba(8, 12, 32, 0.95) 100%)',
@@ -221,8 +221,8 @@ export function AppContent() {
         {/* Ornate Gold Cart Icon */}
         <div className="relative text-[#f5c443] group-hover:rotate-12 transition-transform duration-300">
           <svg
-            width="19"
-            height="19"
+            width="17"
+            height="17"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -246,12 +246,12 @@ export function AppContent() {
         </div>
 
         <div className="flex flex-col text-left">
-          <span className="font-fairytale text-xs tracking-wider text-[#fff3b0] group-hover:text-[#ffd700] transition-colors leading-tight">
+          <span className="font-fairytale text-[11px] sm:text-xs tracking-wider text-[#fff3b0] group-hover:text-[#ffd700] transition-colors leading-tight">
             Wish Vault
           </span>
-          <span className="font-storybook italic text-[11px] text-[#d4af37]/80 -mt-0.5">
+          <span className="font-storybook italic text-[10px] sm:text-[11px] text-[#d4af37]/80 -mt-0.5">
             {wishes.length === 0
-              ? 'Your collection'
+              ? 'Collection'
               : pendingCount > 0
               ? `${pendingCount} waiting`
               : `${grantedCount} fulfilled ✨`}
@@ -259,17 +259,17 @@ export function AppContent() {
         </div>
 
         {wishes.length > 0 && (
-          <span className="w-5 h-5 rounded-full bg-gradient-to-r from-[#ffe07a] to-[#f5c443] text-[#040612] text-[10px] font-extrabold flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(245,196,67,0.7)]">
+          <span className="w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full bg-gradient-to-r from-[#ffe07a] to-[#f5c443] text-[#040612] text-[9px] sm:text-[10px] font-extrabold flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(245,196,67,0.7)]">
             {wishes.length}
           </span>
         )}
       </button>
 
       {/* MAIN MAGICAL STAGE */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center w-full max-w-md mx-auto px-4 py-2 sm:py-6 overflow-y-auto no-scrollbar">
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-center w-full max-w-sm sm:max-w-md mx-auto px-3 sm:px-5 py-2 sm:py-6 overflow-hidden">
         {/* Subtle Ambient Moonbeam God-Ray Halo behind center */}
         <div
-          className="absolute w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none opacity-40 animate-corona"
+          className="absolute w-[280px] h-[280px] sm:w-[480px] sm:h-[480px] rounded-full blur-3xl pointer-events-none opacity-40 animate-corona"
           style={{
             background:
               'radial-gradient(circle, rgba(147, 197, 253, 0.25) 0%, rgba(212, 175, 55, 0.2) 40%, transparent 75%)',
@@ -278,22 +278,22 @@ export function AppContent() {
 
         {/* SCENE 1: THE GENIE IS INSIDE THE LAMP — RUB OR TAP TO RELEASE HIM */}
         {!isGenieOut && (
-          <div className="flex flex-col items-center text-center max-w-md mx-auto animate-in fade-in zoom-in-95 duration-700">
+          <div className="flex flex-col items-center text-center w-full max-w-sm mx-auto my-auto animate-in fade-in zoom-in-95 duration-700 px-2">
             {/* Romantic Introduction Header */}
-            <div className="mb-6">
-              <span className="text-[11px] font-fairytale uppercase tracking-[0.25em] text-[#d4af37] font-semibold block mb-1">
+            <div className="mb-3 sm:mb-6">
+              <span className="text-[10px] sm:text-[11px] font-fairytale uppercase tracking-[0.25em] text-[#d4af37] font-semibold block mb-1">
                 ✦ ANCIENT MAGIC OF THE DUNES ✦
               </span>
-              <h1 className="font-fairytale text-2xl sm:text-3xl text-[#fff3b0] tracking-wider drop-shadow-[0_2px_12px_rgba(245,196,67,0.4)]">
+              <h1 className="font-fairytale text-xl sm:text-3xl text-[#fff3b0] tracking-wider drop-shadow-[0_2px_12px_rgba(245,196,67,0.4)]">
                 The Golden Lamp
               </h1>
-              <p className="font-storybook italic text-sm sm:text-base text-[#f4ecd8]/70 mt-1 max-w-xs mx-auto">
+              <p className="font-storybook italic text-xs sm:text-base text-[#f4ecd8]/70 mt-1 max-w-xs mx-auto">
                 "An ancient magic rests within... awaiting the touch of its rightful master."
               </p>
             </div>
 
             {/* Interactive Lamp with Rubbing & Tapping Physics */}
-            <div className="relative my-4 flex items-center justify-center">
+            <div className="relative my-2 sm:my-4 flex items-center justify-center">
               {/* Outer Golden Glow Ring */}
               <div className="absolute inset-0 rounded-full blur-2xl bg-gradient-to-tr from-[#f5c443]/30 to-[#93c5fd]/20 pointer-events-none animate-corona" />
 
@@ -309,7 +309,7 @@ export function AppContent() {
             </div>
 
             {/* Ethereal guidance hint without any clunky button */}
-            <div className="mt-5 flex items-center justify-center gap-2 text-xs sm:text-sm font-storybook italic text-[#d4af37]/80 tracking-wide select-none animate-pulse">
+            <div className="mt-4 sm:mt-5 flex items-center justify-center gap-2 text-xs sm:text-sm font-storybook italic text-[#d4af37]/80 tracking-wide select-none animate-pulse">
               <span className="text-[#ffe07a]">✦</span>
               <span>Rub or tap the golden lamp to awaken your Genie</span>
               <span className="text-[#ffe07a]">✦</span>
@@ -319,9 +319,9 @@ export function AppContent() {
 
         {/* SCENE 2: THE GENIE IS OUT — CONVERSE IN REAL-TIME & MAKE WISHES */}
         {isGenieOut && (
-          <div className="flex flex-col items-center w-full max-w-sm relative z-10 animate-in fade-in duration-700">
-            {/* Living Genie Character with smooth rolling & emergence animations */}
-            <div className="mb-1">
+          <div className="flex flex-col items-center w-full max-w-sm mx-auto my-auto relative z-10 animate-in fade-in duration-700 px-2">
+            {/* Living Genie Character & Lamp Base together */}
+            <div className="relative flex flex-col items-center mb-0.5">
               <GenieCharacter
                 expression={genieExpression}
                 scale={1}
@@ -331,52 +331,51 @@ export function AppContent() {
                 showAura={true}
                 onClick={handleGenieClick}
               />
+
+              {/* Antique Golden Lamp resting at the base of the smoke tail */}
+              <div className="-mt-8 sm:-mt-10 relative z-10 cursor-pointer">
+                <LampIllustration
+                  size="sm"
+                  isGlowing={true}
+                  smokeActive={isAiThinking || Boolean(justCapturedWish) || isEmerging}
+                  onClick={handleGenieClick}
+                />
+              </div>
             </div>
 
             {/* Conversational Speech Bubble */}
             <div
-              className="w-full -mt-2 mb-4 px-6 py-4 rounded-[24px] text-center transition-all duration-500 backdrop-blur-md relative border border-[#d4af37]/35 shadow-[0_12px_35px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,243,176,0.12)]"
+              className="w-full mb-2.5 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-2xl text-center transition-all duration-500 backdrop-blur-md relative border border-[#d4af37]/35 shadow-[0_10px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,243,176,0.12)]"
               style={{
                 background:
                   'linear-gradient(145deg, rgba(14, 20, 52, 0.95) 0%, rgba(7, 10, 28, 0.96) 100%)',
               }}
             >
               {isAiThinking ? (
-                <div className="flex items-center justify-center gap-2 py-1 text-[#f5c443] font-storybook italic text-sm animate-pulse">
+                <div className="flex items-center justify-center gap-2 py-0.5 text-[#f5c443] font-storybook italic text-xs sm:text-sm animate-pulse">
                   <span>✨</span>
                   <span>The Genie is weaving starlight into an answer…</span>
                   <span>✨</span>
                 </div>
               ) : (
-                <p className="font-storybook text-base sm:text-lg text-[#fff3b0] italic leading-relaxed">
+                <p className="font-storybook text-sm sm:text-base text-[#fff3b0] italic leading-snug">
                   {genieSpeech}
                 </p>
               )}
-              <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-[#080d26] border-b border-r border-[#d4af37]/35 rotate-45" />
             </div>
 
             {/* Captured Wish Notification Banner */}
             {justCapturedWish && (
-              <div className="mb-3 px-4 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-400/50 text-emerald-200 text-xs font-storybook flex items-center gap-1.5 animate-in fade-in zoom-in-95">
+              <div className="mb-2 px-3.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-400/50 text-emerald-200 text-xs font-storybook flex items-center gap-1.5 animate-in fade-in zoom-in-95">
                 <span>👑</span>
                 <span>Wish captured: "<strong>{justCapturedWish}</strong>"</span>
               </div>
             )}
 
-            {/* Antique Golden Lamp */}
-            <LampIllustration
-              size="sm"
-              isGlowing={true}
-              smokeActive={isAiThinking || Boolean(justCapturedWish) || isEmerging}
-              onClick={() => {
-                handleGenieClick();
-              }}
-            />
-
             {/* AI Wish & Conversation Input Form */}
-            <form onSubmit={handleSendMessage} className="mt-5 w-full">
+            <form onSubmit={handleSendMessage} className="w-full">
               <div
-                className="relative flex items-center gap-2 px-5 py-3.5 rounded-full transition-all duration-300 border shadow-[0_8px_30px_rgba(0,0,0,0.6)]"
+                className="relative flex items-center gap-2 px-3.5 py-2 sm:px-5 sm:py-3 rounded-full transition-all duration-300 border shadow-[0_6px_25px_rgba(0,0,0,0.6)]"
                 style={{
                   background:
                     'linear-gradient(135deg, rgba(8, 11, 32, 0.95) 0%, rgba(4, 6, 20, 0.98) 100%)',
@@ -386,8 +385,8 @@ export function AppContent() {
                       : 'rgba(212, 175, 55, 0.35)',
                   boxShadow:
                     inputText.length > 0
-                      ? '0 0 0 4px rgba(245, 196, 67, 0.12), 0 10px 35px rgba(0,0,0,0.7), 0 0 20px rgba(245, 196, 67, 0.2)'
-                      : '0 8px 30px rgba(0,0,0,0.6)',
+                      ? '0 0 0 3px rgba(245, 196, 67, 0.12), 0 8px 25px rgba(0,0,0,0.7), 0 0 15px rgba(245, 196, 67, 0.2)'
+                      : '0 6px 25px rgba(0,0,0,0.6)',
                 }}
               >
                 <input
@@ -414,7 +413,7 @@ export function AppContent() {
                   disabled={!inputText.trim() || isAiThinking}
                   aria-label="Make a Wish"
                   title="Make a Wish ✨"
-                  className="shrink-0 h-10 px-4 rounded-full flex items-center justify-center gap-1.5 transition-all duration-300 disabled:opacity-30 hover:scale-105 active:scale-95 group overflow-hidden relative cursor-pointer"
+                  className="shrink-0 h-9 px-3.5 sm:h-10 sm:px-4 rounded-full flex items-center justify-center gap-1.5 transition-all duration-300 disabled:opacity-30 hover:scale-105 active:scale-95 group overflow-hidden relative cursor-pointer"
                   style={{
                     background: inputText.trim()
                       ? 'linear-gradient(135deg, #fff3b0 0%, #fcd34d 30%, #f59e0b 70%, #d97706 100%)'
@@ -430,7 +429,7 @@ export function AppContent() {
                   )}
 
                   <span
-                    className={`font-fairytale text-xs font-bold tracking-wider relative z-10 transition-colors ${
+                    className={`font-fairytale text-[11px] sm:text-xs font-bold tracking-wider relative z-10 transition-colors ${
                       inputText.trim() ? 'text-[#290e02]' : 'text-[#d4af37]'
                     }`}
                   >
@@ -439,8 +438,8 @@ export function AppContent() {
 
                   {/* Compass / Star Send Icon */}
                   <svg
-                    width="14"
-                    height="14"
+                    width="13"
+                    height="13"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"

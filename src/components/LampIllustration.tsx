@@ -27,9 +27,9 @@ export const LampIllustration: React.FC<LampIllustrationProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
 
   const sizeClasses = {
-    sm: 'w-36 h-28',
-    md: 'w-64 h-48',
-    lg: 'w-80 h-60 sm:w-96 sm:h-72',
+    sm: 'w-24 h-18 sm:w-32 sm:h-24',
+    md: 'w-44 h-34 sm:w-56 sm:h-42',
+    lg: 'w-60 h-44 sm:w-76 sm:h-56 md:w-92 md:h-68',
   }[size];
 
   // Helper to spawn friction sparks during rubbing
@@ -112,11 +112,11 @@ export const LampIllustration: React.FC<LampIllustrationProps> = ({
 
       {/* Magical smoke wisps and stardust rising from spout */}
       {smokeActive && (
-        <div className="absolute top-2 left-4 sm:left-8 pointer-events-none z-20">
+        <div className="absolute top-2 left-2 sm:left-6 pointer-events-none z-20">
           <div className="relative">
             {/* Swirling Smoke Rings */}
             <div
-              className="absolute -top-14 -left-8 w-20 h-20 rounded-full blur-md opacity-70 animate-ping"
+              className="absolute -top-10 -left-4 w-16 h-16 rounded-full blur-md opacity-70 animate-ping"
               style={{
                 background:
                   'radial-gradient(circle, rgba(255,236,160,0.85), rgba(212,175,55,0.3), transparent)',
@@ -124,7 +124,7 @@ export const LampIllustration: React.FC<LampIllustrationProps> = ({
               }}
             />
             <div
-              className="absolute -top-28 -left-14 w-32 h-32 rounded-full blur-xl opacity-60 animate-pulse"
+              className="absolute -top-20 -left-6 w-24 h-24 rounded-full blur-lg opacity-60 animate-pulse"
               style={{
                 background:
                   'radial-gradient(circle, rgba(147,197,253,0.55), rgba(212,175,55,0.35), transparent)',
@@ -132,13 +132,13 @@ export const LampIllustration: React.FC<LampIllustrationProps> = ({
               }}
             />
             {/* Star sparkles */}
-            <span className="absolute -top-16 left-3 text-[#ffd700] text-xl animate-bounce select-none drop-shadow-[0_0_8px_rgba(255,215,0,0.9)]">
+            <span className="absolute -top-12 left-2 text-[#ffd700] text-base animate-bounce select-none drop-shadow-[0_0_8px_rgba(255,215,0,0.9)]">
               ✦
             </span>
-            <span className="absolute -top-28 -left-4 text-[#ffe57f] text-sm animate-pulse select-none">
+            <span className="absolute -top-20 -left-2 text-[#ffe57f] text-xs animate-pulse select-none">
               ✧
             </span>
-            <span className="absolute -top-20 -left-10 text-[#f5c443] text-sm animate-ping select-none">
+            <span className="absolute -top-16 -left-5 text-[#f5c443] text-xs animate-ping select-none">
               ✨
             </span>
           </div>
