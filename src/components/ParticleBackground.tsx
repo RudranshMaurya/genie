@@ -57,26 +57,27 @@ export const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
       type: 'firefly' | 'stardust' | 'gold-ember';
     }
 
-    const goldColors = [
-      'rgba(245, 196, 67, ',
-      'rgba(232, 168, 56, ',
-      'rgba(255, 226, 138, ',
-      'rgba(212, 175, 55, ',
+    const magicColors = [
+      'rgba(244, 63, 142, ', // pink/rose
+      'rgba(236, 72, 153, ', // rose
+      'rgba(192, 132, 252, ', // lavender
+      'rgba(245, 196, 67, ', // gold
+      'rgba(255, 230, 160, ', // pale gold
     ];
 
     const particles: Particle[] = Array.from({ length: count }, () => {
-      const type = Math.random() > 0.4 ? 'stardust' : Math.random() > 0.5 ? 'firefly' : 'gold-ember';
+      const type = Math.random() > 0.4 ? 'stardust' : Math.random() > 0.4 ? 'sakura-petal' : 'gold-ember';
       return {
         x: Math.random() * width,
         y: Math.random() * height,
-        size: type === 'firefly' ? Math.random() * 2.8 + 1.2 : Math.random() * 1.8 + 0.6,
-        speedX: (Math.random() - 0.5) * (type === 'firefly' ? 0.35 : 0.15),
-        speedY: (Math.random() - 0.5) * (type === 'firefly' ? 0.35 : 0.15) - 0.1,
+        size: type === 'sakura-petal' ? Math.random() * 3.5 + 2 : Math.random() * 1.8 + 0.6,
+        speedX: (Math.random() - 0.5) * (type === 'sakura-petal' ? 0.4 : 0.15),
+        speedY: type === 'sakura-petal' ? Math.random() * 0.4 + 0.2 : (Math.random() - 0.5) * 0.2 - 0.05,
         opacity: Math.random() * 0.7 + 0.2,
         pulseSpeed: Math.random() * 0.03 + 0.01,
-        color: goldColors[Math.floor(Math.random() * goldColors.length)],
-        glow: type === 'firefly' ? 12 : 5,
-        type,
+        color: magicColors[Math.floor(Math.random() * magicColors.length)],
+        glow: type === 'sakura-petal' ? 8 : 5,
+        type: type as any,
       };
     });
 

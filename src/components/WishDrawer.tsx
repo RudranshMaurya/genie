@@ -14,57 +14,41 @@ function statusMeta(status: WishStatus) {
   switch (status) {
     case 'WISH GRANTED':
       return {
-        badge: 'Wish Granted',
-        pillBg: 'bg-emerald-950/80 border-emerald-400/40 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.3)]',
-        dot: 'bg-emerald-400',
-        cardGlow: 'hover:border-emerald-500/60 hover:shadow-[0_10px_30px_rgba(16,185,129,0.2)]',
+        badge: 'Completed',
+        pillBg: 'bg-purple-950/80 border-purple-400/40 text-purple-200 shadow-[0_0_12px_rgba(168,85,247,0.3)]',
+        dot: 'bg-purple-400',
+        cardGlow: 'hover:border-purple-500/60 hover:shadow-[0_10px_30px_rgba(168,85,247,0.2)]',
         icon: '👑',
-        textColor: 'text-emerald-100',
+        textColor: 'text-purple-100',
       };
     case 'MAGIC IN PROGRESS':
-      return {
-        badge: 'Magic in Progress',
-        pillBg: 'bg-blue-950/80 border-blue-400/40 text-blue-200 shadow-[0_0_12px_rgba(59,130,246,0.3)]',
-        dot: 'bg-blue-400 animate-pulse',
-        cardGlow: 'hover:border-blue-500/60 hover:shadow-[0_10px_30px_rgba(59,130,246,0.2)]',
-        icon: '🔮',
-        textColor: 'text-blue-100',
-      };
     case 'COMING SOON':
       return {
-        badge: 'Coming Soon',
-        pillBg: 'bg-amber-950/80 border-amber-400/40 text-amber-200 shadow-[0_0_12px_rgba(245,158,11,0.3)]',
-        dot: 'bg-amber-400 animate-pulse',
-        cardGlow: 'hover:border-amber-500/60 hover:shadow-[0_10px_30px_rgba(245,158,11,0.2)]',
-        icon: '⏳',
-        textColor: 'text-amber-100',
-      };
-    case 'UNDER CONSIDERATION':
-      return {
-        badge: 'Under Consideration',
-        pillBg: 'bg-indigo-950/80 border-indigo-400/40 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.3)]',
-        dot: 'bg-indigo-400',
-        cardGlow: 'hover:border-indigo-500/60',
-        icon: '💭',
-        textColor: 'text-indigo-100',
+        badge: 'Approved',
+        pillBg: 'bg-emerald-950/80 border-emerald-400/40 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.3)]',
+        dot: 'bg-emerald-400 animate-pulse',
+        cardGlow: 'hover:border-emerald-500/60 hover:shadow-[0_10px_30px_rgba(16,185,129,0.2)]',
+        icon: '💕',
+        textColor: 'text-emerald-100',
       };
     case 'ON HOLD':
       return {
-        badge: 'Postponed',
-        pillBg: 'bg-zinc-900/80 border-zinc-500/40 text-zinc-300',
-        dot: 'bg-zinc-400',
-        cardGlow: 'hover:border-zinc-500/50',
+        badge: 'On Hold',
+        pillBg: 'bg-rose-950/80 border-rose-500/40 text-rose-200',
+        dot: 'bg-rose-400',
+        cardGlow: 'hover:border-rose-500/50',
         icon: '⏸',
-        textColor: 'text-zinc-200',
+        textColor: 'text-rose-200',
       };
+    case 'UNDER CONSIDERATION':
     case 'WISH RECEIVED':
     default:
       return {
-        badge: 'Wish Whispered',
-        pillBg: 'bg-purple-950/80 border-purple-400/40 text-purple-200 shadow-[0_0_12px_rgba(168,85,247,0.3)]',
-        dot: 'bg-purple-400',
-        cardGlow: 'hover:border-purple-500/60',
-        icon: '✨',
+        badge: 'Pending',
+        pillBg: 'bg-amber-950/80 border-amber-400/40 text-amber-200 shadow-[0_0_12px_rgba(245,158,11,0.3)]',
+        dot: 'bg-amber-400',
+        cardGlow: 'hover:border-amber-500/60',
+        icon: '✦',
         textColor: 'text-[#fff4d0]',
       };
   }
@@ -107,48 +91,48 @@ export const WishDrawer: React.FC<WishDrawerProps> = ({
         isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
       }`}
       style={{
-        background: isOpen ? 'rgba(2, 4, 15, 0.78)' : 'transparent',
-        backdropFilter: isOpen ? 'blur(10px)' : 'none',
+        background: isOpen ? 'rgba(10, 2, 20, 0.82)' : 'transparent',
+        backdropFilter: isOpen ? 'blur(12px)' : 'none',
       }}
     >
       {/* Sliding Luxury Storybook Vault Cart Panel */}
       <div
-        className={`relative w-full max-w-md h-full vault-panel-bg border-l border-[#d4af37]/45 flex flex-col overflow-hidden transition-transform duration-500 ease-out shadow-[-20px_0_60px_rgba(0,0,0,0.9),-5px_0_25px_rgba(212,175,55,0.18)] ${
+        className={`relative w-full max-w-md h-full bg-gradient-to-b from-[#1b0a33] via-[#140626] to-[#0d031a] border-l border-pink-400/25 flex flex-col overflow-hidden transition-transform duration-500 ease-out shadow-[-20px_0_60px_rgba(0,0,0,0.9),-5px_0_25px_rgba(244,63,142,0.18)] ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        {/* Soft Golden Header Aura & Moonbeams */}
+        {/* Soft Pink Header Aura */}
         <div
           className="absolute top-0 left-0 right-0 h-48 pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse at 50% 0%, rgba(245,196,67,0.22) 0%, rgba(212,175,55,0.06) 55%, transparent 80%)',
+              'radial-gradient(ellipse at 50% 0%, rgba(244,63,142,0.2) 0%, rgba(168,85,247,0.08) 55%, transparent 80%)',
           }}
         />
 
         {/* Top Header Bar */}
-        <div className="relative z-10 px-6 pt-7 pb-4 border-b border-[#d4af37]/25 flex items-center justify-between">
+        <div className="relative z-10 px-6 pt-7 pb-4 border-b border-pink-400/20 flex items-center justify-between">
           <div className="flex items-center gap-3.5">
             {/* Glowing Lamp Seal Emblem */}
             <div className="relative">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#12193b] via-[#1e2a63] to-[#2b3a8a] border border-[#d4af37]/50 flex items-center justify-center text-2xl shadow-[0_0_25px_rgba(245,196,67,0.35)]">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#2a1147] via-[#3b175e] to-[#581c87] border border-pink-400/40 flex items-center justify-center text-2xl shadow-[0_0_25px_rgba(244,63,142,0.35)]">
                 🪔
               </div>
-              <span className="absolute -top-1 -right-1 text-[#ffd700] text-xs animate-ping">
+              <span className="absolute -top-1 -right-1 text-pink-300 text-xs animate-ping">
                 ✦
               </span>
             </div>
 
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="font-fairytale text-lg sm:text-xl text-[#fff3b0] tracking-wider drop-shadow-[0_2px_8px_rgba(245,196,67,0.3)]">
-                  The Wish Vault
+                <h2 className="font-script text-2xl text-pink-100 tracking-wide drop-shadow-[0_0_10px_rgba(244,63,142,0.5)]">
+                  The Wish Vault ♡
                 </h2>
-                <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-gradient-to-r from-[#ffe57f] to-[#f5c443] text-[#050716] font-extrabold shadow-[0_0_10px_rgba(245,196,67,0.4)]">
+                <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-gradient-to-r from-[#ffd166] to-[#f43f8e] text-[#120826] font-extrabold shadow-[0_0_10px_rgba(244,63,142,0.4)]">
                   {wishes.length}
                 </span>
               </div>
-              <p className="font-storybook italic text-xs text-[#d4af37]/80 mt-0.5">
+              <p className="font-handwriting text-xs text-pink-300/80 mt-0.5">
                 {wishes.length === 0
                   ? "Ananya's Enchanted Archive of Dreams"
                   : `${pendingWishes.length} waiting to happen · ${grantedWishes.length} fulfilled`}
@@ -159,7 +143,7 @@ export const WishDrawer: React.FC<WishDrawerProps> = ({
           {/* Close Talisman Button */}
           <button
             onClick={onClose}
-            className="group w-9 h-9 rounded-full border border-[#d4af37]/35 hover:border-[#ffd700] bg-[#0c1333]/60 hover:bg-[#d4af37]/15 flex items-center justify-center text-[#d4af37] hover:text-[#fff3b0] transition-all shadow-sm"
+            className="group w-9 h-9 rounded-full border border-pink-400/30 hover:border-pink-300 bg-pink-500/10 hover:bg-pink-500/20 flex items-center justify-center text-pink-300 hover:text-white transition-all shadow-sm cursor-pointer"
             aria-label="Close vault"
           >
             <span className="text-sm group-hover:rotate-90 transition-transform duration-300">
@@ -169,38 +153,38 @@ export const WishDrawer: React.FC<WishDrawerProps> = ({
         </div>
 
         {/* Filter Navigation Tabs */}
-        <div className="relative z-10 px-6 py-3 flex items-center gap-2 border-b border-[#d4af37]/15 bg-[#060a22]/80 backdrop-blur-sm">
+        <div className="relative z-10 px-6 py-3 flex items-center gap-2 border-b border-pink-400/15 bg-[#120524]/80 backdrop-blur-sm">
           <button
             onClick={() => setTab('all')}
-            className={`px-3.5 py-1.5 rounded-full text-xs transition-all font-storybook font-medium flex items-center gap-1.5 ${
+            className={`px-3.5 py-1.5 rounded-full text-xs transition-all font-semibold flex items-center gap-1.5 ${
               tab === 'all'
-                ? 'bg-gradient-to-r from-[#ffe57f] via-[#f5c443] to-[#d4af37] text-[#050716] font-bold shadow-[0_0_15px_rgba(245,196,67,0.5)] scale-105'
-                : 'text-[#f4ecd8]/65 hover:text-[#fff3b0] hover:bg-[#d4af37]/10'
+                ? 'bg-gradient-to-r from-[#ffd166] via-[#f43f8e] to-[#c084fc] text-[#120826] font-bold shadow-[0_0_15px_rgba(244,63,142,0.5)] scale-105'
+                : 'text-pink-200/70 hover:text-white hover:bg-pink-500/10'
             }`}
           >
-            <span>All Dreams</span>
+            <span>All Wishes</span>
             <span className="text-[10px] opacity-80 font-bold">({wishes.length})</span>
           </button>
           <button
             onClick={() => setTab('pending')}
-            className={`px-3.5 py-1.5 rounded-full text-xs transition-all font-storybook font-medium flex items-center gap-1.5 ${
+            className={`px-3.5 py-1.5 rounded-full text-xs transition-all font-semibold flex items-center gap-1.5 ${
               tab === 'pending'
-                ? 'bg-gradient-to-r from-[#ffe57f] via-[#f5c443] to-[#d4af37] text-[#050716] font-bold shadow-[0_0_15px_rgba(245,196,67,0.5)] scale-105'
-                : 'text-[#f4ecd8]/65 hover:text-[#fff3b0] hover:bg-[#d4af37]/10'
+                ? 'bg-gradient-to-r from-[#ffd166] via-[#f43f8e] to-[#c084fc] text-[#120826] font-bold shadow-[0_0_15px_rgba(244,63,142,0.5)] scale-105'
+                : 'text-pink-200/70 hover:text-white hover:bg-pink-500/10'
             }`}
           >
-            <span>Waiting ✨</span>
+            <span>Pending ✦</span>
             <span className="text-[10px] opacity-80 font-bold">({pendingWishes.length})</span>
           </button>
           <button
             onClick={() => setTab('granted')}
-            className={`px-3.5 py-1.5 rounded-full text-xs transition-all font-storybook font-medium flex items-center gap-1.5 ${
+            className={`px-3.5 py-1.5 rounded-full text-xs transition-all font-semibold flex items-center gap-1.5 ${
               tab === 'granted'
-                ? 'bg-gradient-to-r from-[#ffe57f] via-[#f5c443] to-[#d4af37] text-[#050716] font-bold shadow-[0_0_15px_rgba(245,196,67,0.5)] scale-105'
-                : 'text-[#f4ecd8]/65 hover:text-[#fff3b0] hover:bg-[#d4af37]/10'
+                ? 'bg-gradient-to-r from-[#ffd166] via-[#f43f8e] to-[#c084fc] text-[#120826] font-bold shadow-[0_0_15px_rgba(244,63,142,0.5)] scale-105'
+                : 'text-pink-200/70 hover:text-white hover:bg-pink-500/10'
             }`}
           >
-            <span>Fulfilled 👑</span>
+            <span>Completed 👑</span>
             <span className="text-[10px] opacity-80 font-bold">({grantedWishes.length})</span>
           </button>
         </div>
